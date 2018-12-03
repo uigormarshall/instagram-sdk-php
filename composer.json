@@ -1,5 +1,5 @@
 {
-  "name": "liamcottle/instagram-sdk-php",
+  "name": "uigormarshall/instagram-sdk-php",
   "type": "library",
   "description": "This is an unofficial SDK for the Instagram Private API in PHP",
   "license": "MIT",
@@ -17,8 +17,8 @@
   },
   "authors": [
     {
-      "name": "Liam Cottle",
-      "email": "liam@liamcottle.com"
+      "name": "UigorMarshall",
+      "email": "uigor.1@hotmail.com"
     }
   ],
   "autoload": {
