@@ -9,8 +9,7 @@ class BusinessStaticsResponse extends BaseResponse {
     public function __construct($params){
         $response = $params;
         $response = $params->response->getData();
-        //var_dump($response->lights->response->getData());
-        $this->lights = json_encode($response);
+        $this->lights = $response;
     }
 
     public function getStatistics()

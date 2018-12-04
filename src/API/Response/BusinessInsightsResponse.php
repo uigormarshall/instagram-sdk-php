@@ -6,7 +6,7 @@ class BusinessInsightsResponse extends BaseResponse {
     public $insights;
     public function __construct($params){
         $response = $params->response->getData();
-        $this->insights = json_encode($response);
+        $this->insights = $response;
     }
     
     public function getLightes()
