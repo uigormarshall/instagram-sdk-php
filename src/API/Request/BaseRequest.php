@@ -18,7 +18,7 @@ abstract class BaseRequest extends Request {
     /**
      * @var Response The Response Object
      */
-    private $response;
+    public $response;
 
     public $challengeUrl;
 

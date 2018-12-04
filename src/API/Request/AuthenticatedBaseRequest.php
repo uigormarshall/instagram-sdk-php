@@ -6,9 +6,6 @@ use Instagram\Instagram;
 
 abstract class AuthenticatedBaseRequest extends BaseRequest {
 
-    /**
-     * @param $instagram Instagram The Instagram instance to make the Request with.
-     */
     public function __construct($instagram){
 
         parent::__construct($instagram);
@@ -18,5 +15,4 @@ abstract class AuthenticatedBaseRequest extends BaseRequest {
         }
 
     }
-
 }

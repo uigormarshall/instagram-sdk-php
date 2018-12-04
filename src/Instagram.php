@@ -47,6 +47,10 @@ use Instagram\API\Request\UnlikeMediaRequest;
 use Instagram\API\Request\UserFeedRequest;
 use Instagram\API\Request\UserMapRequest;
 use Instagram\API\Request\UserTagsFeedRequest;
+
+use Instagram\API\Request\BusinessInsightsRequest;
+use Instagram\API\Request\BusinessStaticsRequest;
+
 use Instagram\API\Response\Model\FeedItem;
 use Instagram\API\Response\Model\Location;
 use Instagram\API\Response\Model\User;
@@ -149,6 +153,19 @@ class Instagram {
         //Set your Timezone
         date_default_timezone_set(Constants::TIMEZONE);
 
+    }
+
+    //get bussness
+    public function getStatistics(){
+        $request = new BusinessStaticsRequest($this);
+        $respone  = $request->execute();
+        return $respone->getStatistics();
+    }
+
+    public function getInsights(){
+        $request = new BusinessInsightsRequest($this);
+        $response = $request->execute();
+        return $response->getLightes();
     }
 
     /**

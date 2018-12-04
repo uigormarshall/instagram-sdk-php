@@ -51,6 +51,30 @@ abstract class Request {
     private $params = array();
 
     /**
+     * Whether this API call needs signing of the POST data.
+     *
+     * On by default since most calls require it.
+     *
+     * @var bool
+     */
+    protected $_signedPost;
+
+    /**
+     * Whether this API endpoint responds with multiple JSON objects.
+     *
+     * Off by default.
+     *
+     * @var bool
+     */
+    protected $_isMultiResponse;
+
+    /**
+     * An array of POST params.
+     *
+     * @var array
+     */
+    protected $_posts;
+    /**
      * @return string Request Method
      */
     public abstract function getMethod();
@@ -63,7 +87,57 @@ abstract class Request {
     public function __construct(){
         $this->mapper = new CustomJsonMapper();
     }
+    /**
+     * Set signed request data flag.
+     *
+     * @param bool $signedPost
+     *
+     * @return self
+     */
+    public function setSignedPost(
+        $signedPost = true)
+    {
+        $this->_signedPost = $signedPost;
 
+        return $this;
+    }
+
+    /**
+     * Set the "this API endpoint responds with multiple JSON objects" flag.
+     *
+     * @param bool $flag
+     *
+     * @return self
+     */
+    public function setIsMultiResponse(
+        $flag = false)
+    {
+        $this->_isMultiResponse = $flag;
+
+        return $this;
+    }
+
+    /**
+     * Add POST param to request, overwriting any previous value.
+     *
+     * @param string $key
+     * @param mixed  $value
+     *
+     * @return self
+     */
+    public function addPost(
+        $key,
+        $value)
+    {
+        if ($value === true) {
+            $value = 'true';
+        } elseif ($value === false) {
+            $value = 'false';
+        }
+        $this->_posts[$key] = $value;
+
+        return $this;
+    }
     /**
      * Set Proxy to be used for Requests
      * @param $proxy string
