@@ -50,6 +50,7 @@ use Instagram\API\Request\UserTagsFeedRequest;
 
 use Instagram\API\Request\BusinessInsightsRequest;
 use Instagram\API\Request\BusinessStaticsRequest;
+use Instagram\API\Request\RecentRequest;
 
 use Instagram\API\Response\Model\FeedItem;
 use Instagram\API\Response\Model\Location;
@@ -1556,4 +1557,9 @@ class Instagram {
       return $request->execute();
     }
 
+    public function getRecentActivityInbox(){
+        $request = new RecentRequest($this);
+        $response =  $request->execute();
+        return $response->getRecents();
+    }
 }
