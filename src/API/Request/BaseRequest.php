@@ -121,7 +121,7 @@ abstract class BaseRequest extends Request {
         if($this->throwExceptionIfResponseNotOk() && !$response->isOK() && !$response->isJson()){
             throw new InstagramException(sprintf("Instagram Request Failed! [%s] [%s]", $this->getEndpoint(), $response->getCode()));
         }
-
+        $this->addCookie('ig_cb', 1);
         $this->instagram->setCookies(array_merge($this->instagram->getCookies(), $response->getCookies()));
 
         if($this->parseResponse()){
