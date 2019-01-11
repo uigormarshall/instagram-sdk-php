@@ -266,7 +266,7 @@ abstract class Request {
         foreach($this->getHeaders() as $key => $value){
             $curl->setHeader($key, $value);
         }
-
+	$curl->setCookie('ig_cb', 1);
         foreach($this->getCookies() as $key => $value){
             $curl->setCookie($key, $value);
         }
